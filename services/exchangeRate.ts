@@ -14,13 +14,31 @@ export type ExchangeRate = {
     selling: string;
 };
 
-export async function fetchExchangeRates(date: Date = new Date()): Promise<ExchangeRate[]> {
-    const day = date.toISOString().split("T")[0];
+export type ExchangeRateHeader = {
+    report_name_th?: string;
+    report_name_eng?: string;
+    notice_th?: string;
+    notice_eng?: string;
+    timestamp?: string;
+    [key: string]: unknown;
+};
+
+export type ExchangeRateResult = {
+    dataDetail: ExchangeRate[];
+    dataHeader: ExchangeRateHeader | undefined;
+};
+
+export async function fetchExchangeRates(
+    startDate: Date = new Date(),
+    endDate: Date = startDate
+): Promise<ExchangeRateResult> {
+    const start = startDate.toISOString().split("T")[0];
+    const end = endDate.toISOString().split("T")[0];
 
     const url =
         Platform.OS === "web"
-            ? `/api/exchange-rate?start_period=${day}&end_period=${day}`
-            : `https://gateway.api.bot.or.th/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/?start_period=${day}&end_period=${day}`;
+            ? `/api/exchange-rate?start_period=${start}&end_period=${end}`
+            : `https://gateway.api.bot.or.th/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/?start_period=${start}&end_period=${end}`;
 
     const headers: Record<string, string> = {
         "Content-Type": "application/json",
@@ -36,5 +54,9 @@ export async function fetchExchangeRates(date: Date = new Date()): Promise<Excha
     }
 
     const json = await response.json();
-    return json?.result?.data?.data_detail ?? [];
+
+    return {
+        dataDetail: json?.result?.data?.data_detail ?? [],
+        dataHeader: json?.result?.data?.data_header,
+    };
 }

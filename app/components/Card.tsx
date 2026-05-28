@@ -9,7 +9,23 @@ type CardProps = {
 
 function Card({ data }: CardProps) {
     return (
-        <Pressable onLongPress={() => router.push("/detail")}>
+        <Pressable
+            onLongPress={() =>
+                router.push({
+                    pathname: "/detail",
+                    params: {
+                        currency_id: data.currency_id,
+                        currency_name_th: data.currency_name_th,
+                        currency_name_eng: data.currency_name_eng,
+                        buying_sight: data.buying_sight,
+                        buying_transfer: data.buying_transfer,
+                        mid_rate: data.mid_rate,
+                        selling: data.selling,
+                        period: data.period,
+                    },
+                })
+            }
+        >
             <View className="flex flex-row border-b border-slate-200" style={{ paddingVertical: 14 }}>
                 <View className="flex-1 flex-row items-center gap-4">
                     <View className="h-14 w-14 bg-gray-200 rounded-full flex items-center justify-center">
