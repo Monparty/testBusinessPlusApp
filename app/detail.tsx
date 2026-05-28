@@ -51,7 +51,7 @@ function Detail() {
             <View className="flex flex-row p-4">
                 <Text className="text-slate-500 font-semibold">อัตราแลกเปลี่ยน · {formatted || "วันนี้"}</Text>
             </View>
-            <ScrollView className="px-4 flex">
+            <ScrollView className="px-4 flex" contentContainerStyle={{ paddingBottom: 40 }}>
                 <View style={{ marginBottom: 4 }}>
                     <View className="flex-1 flex-row gap-4 items-end" style={{ marginBottom: 6 }}>
                         <Text className="text-black font-semibold" style={{ fontSize: 48 }}>
@@ -62,7 +62,7 @@ function Detail() {
                         </Text>
                     </View>
                     <View
-                        className="bg-green-100 rounded-full"
+                        className="bg-green-100 rounded-full mb-4"
                         style={{
                             alignSelf: "flex-start",
                             paddingHorizontal: 18,
@@ -75,10 +75,8 @@ function Detail() {
                         </Text>
                     </View>
                 </View>
-                <View className="flex-1" style={{ paddingTop: 20 }}>
-                    <LineChart data={dataChart} areaChart width={300} />
-                </View>
-                <View style={{ paddingVertical: 14 }}>
+                <LineChart data={dataChart} areaChart width={300} />
+                <View style={{ paddingVertical: 6 }}>
                     <Text className="text-slate-500 font-semibold">ข้อมูลย้อนหลัง 7 วัน</Text>
                     <Text className="text-slate-500" style={{ fontSize: 12, marginTop: 4 }}>
                         * API ไม่มีข้อมูลวันหยุด ผลลัพธ์อาจน้อยกว่า 7 แถว

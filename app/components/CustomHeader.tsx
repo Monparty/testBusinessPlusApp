@@ -31,8 +31,10 @@ function CustomHeader() {
     if (pathname === "/detail" && params?.currency_name_th) {
         return (
             <View className="flex">
-                <Text className="text-black text-xl font-semibold">{params.currency_name_th}</Text>
-                <Text className="text-slate-500">
+                <Text className="text-black text-xl font-semibold" numberOfLines={1} style={{ width: 200 }}>
+                    {params.currency_name_th}
+                </Text>
+                <Text className="text-slate-500" numberOfLines={1} style={{ width: 200 }}>
                     {params.currency_name_eng}
                 </Text>
             </View>

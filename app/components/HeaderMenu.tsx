@@ -60,12 +60,13 @@ function MenuItem({
     return (
         <Pressable
             onPress={onPress}
+            className="flex-row flex flex-1 gap-4 px-4 py-2"
             style={({ pressed }) => ({
+                display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
                 paddingHorizontal: 14,
-                paddingVertical: 12,
-                gap: 12,
+                paddingVertical: 20,
                 backgroundColor: pressed ? "#f3f4f6" : "transparent",
             })}
         >

@@ -15,6 +15,7 @@ export default function Home() {
             })
             .catch((err) => console.error("fetch error", err));
     }, []);
+    // https://claude.ai/chat/818c604e-88d5-433a-9f19-4853af06ec1c
 
     return (
         <View className="flex-1 bg-white">
@@ -25,7 +26,7 @@ export default function Home() {
             {exchangeHeader?.timestamp && (
                 <Text className="px-4 pb-2 text-xs text-slate-400">อัปเดต: {exchangeHeader.timestamp}</Text>
             )}
-            <ScrollView className="px-4 flex">
+            <ScrollView className="px-4 flex" contentContainerStyle={{ paddingBottom: 60 }}>
                 {exchangeData.map((item, index) => (
                     <Card key={index} data={item} />
                 ))}

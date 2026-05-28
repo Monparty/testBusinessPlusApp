@@ -35,7 +35,12 @@ function Card({ data }: CardProps) {
                     </View>
                     <View>
                         <Text className="font-semibold">{data?.currency_name_th}</Text>
-                        <Text style={{ fontSize: 12, marginTop: 4 }}>{data?.currency_name_eng}</Text>
+                        <Text
+                            style={{ fontSize: 12, marginTop: 4, width: 180, overflowX: "hidden" }}
+                            numberOfLines={1}
+                        >
+                            {data?.currency_name_eng}
+                        </Text>
                     </View>
                 </View>
                 <View className="flex justify-center">
