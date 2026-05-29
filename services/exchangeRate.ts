@@ -30,15 +30,20 @@ export type ExchangeRateResult = {
 
 export async function fetchExchangeRates(
     startDate: Date = new Date(),
-    endDate: Date = startDate
+    endDate: Date = startDate,
 ): Promise<ExchangeRateResult> {
     const start = startDate.toISOString().split("T")[0];
     const end = endDate.toISOString().split("T")[0];
+
+    const mockDate = "2026-05-28";
 
     const url =
         Platform.OS === "web"
             ? `/api/exchange-rate?start_period=${start}&end_period=${end}`
             : `https://gateway.api.bot.or.th/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/?start_period=${start}&end_period=${end}`;
+
+            // ? `/api/exchange-rate?start_period=${mockDate}&end_period=${mockDate}`
+            // : `https://gateway.api.bot.or.th/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/?start_period=${mockDate}&end_period=${mockDate}`;
 
     const headers: Record<string, string> = {
         "Content-Type": "application/json",
