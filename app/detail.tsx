@@ -54,11 +54,19 @@ function Detail() {
             <ScrollView className="px-4 flex" contentContainerStyle={{ paddingBottom: 40 }}>
                 <View style={{ marginBottom: 4 }}>
                     <View className="flex-1 flex-row gap-4 items-end" style={{ marginBottom: 6 }}>
-                        <Text className="text-black font-semibold" style={{ fontSize: 48 }}>
-                            {params.buying_sight ?? "-"}
-                            <Text className="text-slate-500 font-medium px-4" style={{ fontSize: 14 }}>
-                                บาท
-                            </Text>
+                        <Text>
+                            {params.buying_sight ? (
+                                <Text className="text-black font-semibold" style={{ fontSize: 48 }}>
+                                    {params.buying_sight}
+                                    <Text className="text-slate-500 font-medium px-4" style={{ fontSize: 14 }}>
+                                        บาท
+                                    </Text>
+                                </Text>
+                            ) : (
+                                <Text className="text-gray-400 font-semibold" style={{ fontSize: 30 }}>
+                                    ไม่พบข้อมูลจาก API
+                                </Text>
+                            )}
                         </Text>
                     </View>
                     <View

@@ -35,10 +35,7 @@ function Card({ data }: CardProps) {
                     </View>
                     <View>
                         <Text className="font-semibold">{data?.currency_name_th}</Text>
-                        <Text
-                            style={{ fontSize: 12, marginTop: 4, width: 180, overflowX: "hidden" }}
-                            numberOfLines={1}
-                        >
+                        <Text style={{ fontSize: 12, marginTop: 4, width: 180, overflowX: "hidden" }} numberOfLines={1}>
                             {data?.currency_name_eng}
                         </Text>
                     </View>
@@ -46,7 +43,11 @@ function Card({ data }: CardProps) {
                 <View className="flex justify-center">
                     <View className="flex items-end justify-end">
                         <Text className="text-right font-semibold">1 {data?.currency_id}</Text>
-                        <Text className="text-right text-green-500">฿{data?.buying_sight}</Text>
+                        {data?.buying_sight ? (
+                            <Text className="text-right text-green-500">฿{data?.buying_sight}</Text>
+                        ) : (
+                            <Text className="text-right text-gray-400 text-xs mt-1">{"ไม่พบข้อมูลจาก API"}</Text>
+                        )}
                     </View>
                 </View>
             </View>

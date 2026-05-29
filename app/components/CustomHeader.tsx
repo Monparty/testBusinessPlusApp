@@ -44,7 +44,7 @@ function CustomHeader() {
     return (
         <View className="flex">
             <Text className="text-black text-xl font-semibold">อัตราแลกเปลี่ยน</Text>
-            {formatted ? <Text className="text-black">อัปเดต {formatted}</Text> : null}
+            {formatted ? <Text className="text-black">อัปเดตล่าสุด {formatted}</Text> : null}
         </View>
     );
 }
